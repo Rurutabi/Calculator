@@ -12,34 +12,64 @@ body {
   display: flex;
   font-family: "Poppins", sans-serif;
   height: 100vh;
-
-  color: white;
+  color: black;
 }
 
 p {
   font-size: 1.6rem;
 }
 
+.before-calculate {
+  font-size: 3.6rem;
+}
 .container {
   display: flex;
   width: 80%;
   align-items: center;
   justify-content: center;
   margin: auto;
-  background-color: #111111;
+  background-color: #001f3f;
+  border-style: solid;
   flex-direction: column;
-  width: 400px;
-  padding: 36px;
-}
-
-.row {
-  display: flex;
-  background-color: #aaaaaa;
-  width: 350px;
+  width: 300px;
+  padding: 12px;
+  border-radius: 15px;
 }
 
 .first-row {
   flex-direction: column;
   align-items: flex-end;
   padding: 1.6rem;
+  background-color: #aaaaaa;
+  border-style: solid;
+}
+
+.row {
+  display: flex;
+  border-radius: 8px;
+  margin-top: 4px;
+  width: 260px;
+  justify-content: center;
+}
+
+.second-row {
+  gap: 16px;
+}
+
+.red,
+.green {
+  border-style: solid;
+  padding: 1.4rem;
+}
+
+.red {
+  background-color: #ff6f61;
+}
+
+.green {
+  background-color: #009b77;
+}
+
+.normal-row {
+  gap: 4px;
 }
