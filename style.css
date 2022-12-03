@@ -20,8 +20,10 @@ p {
 }
 
 .before-calculate {
-  font-size: 3.6rem;
+  font-size: 2.6rem;
+  overflow: hidden;
 }
+
 .container {
   display: flex;
   width: 80%;
@@ -38,7 +40,11 @@ p {
 
 .before,
 .after {
-  height: 60%;
+  display: flex;
+  justify-content: flex-end;
+  width: 230px;
+  overflow: hidden;
+  height: 30px;
 }
 
 .first-row {
