@@ -1,6 +1,7 @@
 "use strict";
 const before = document.querySelector(".before-calculate");
 const after = document.querySelector(".after-calculate");
+const checkNumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
 
 let input = "";
 let symbol = "";
@@ -31,6 +32,21 @@ function calculateResult() {
   after.textContent = `${eval(input)}`;
 }
 
+function isNumber() {
+  if (
+    checkNumber.includes(
+      before.textContent.charAt(before.textContent.length - 1)
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// before.textContent = "0"; testing
+// console.log(isNumber());
+
 equalButton.addEventListener("click", function () {
   calculateResult();
 });
@@ -44,10 +60,18 @@ clearButton.addEventListener("click", function () {
 
 //problem with deleting number
 deleteButton.addEventListener("click", function () {
-  before.textContent = before.textContent.substring(0, input.length - 1);
-  input = input.substring(0, input.length - 1);
-  symbol = "";
-  console.log(symbol);
+  if (isNumber() === true) {
+    before.textContent = before.textContent.substring(0, input.length - 1);
+    input = input.substring(0, input.length - 1);
+    symbol = "delete";
+    console.log(symbol);
+  } else if (isNumber() === false) {
+    before.textContent = before.textContent.substring(0, input.length - 1);
+    input = input.substring(0, input.length - 1);
+    symbol = "";
+  } else {
+    console.log("Something is very wrong");
+  }
 });
 
 decimalButton.addEventListener("click", function () {
@@ -77,7 +101,7 @@ twoButton.addEventListener("click", function () {
 threeButton.addEventListener("click", function () {
   before.textContent += "3";
   input += "3";
-  console.log(symbol);
+
   symbol = "";
 });
 
@@ -129,6 +153,8 @@ plusButton.addEventListener("click", function () {
       input = input.substring(0, input.length - 1);
       input += "+";
       symbol = "+";
+    } else if (symbol === "delete") {
+      console.log("Number only");
     }
   }
 });
@@ -139,13 +165,14 @@ minusButton.addEventListener("click", function () {
       before.textContent += "-";
       input += "-";
       symbol = "-";
-    } else if (symbol !== "+" || symbol !== "x" || symbol !== "÷") {
+    } else if (symbol === "+" || symbol === "x" || symbol === "÷") {
       before.textContent = before.textContent.slice(0, -1);
       before.textContent += "-";
       input = input.substring(0, input.length - 1);
       input += "-";
-      console.log(input);
       symbol = "-";
+    } else if (symbol === "delete") {
+      console.log("Number only");
     }
   }
 });
@@ -156,13 +183,14 @@ mutiplyButton.addEventListener("click", function () {
       before.textContent += "x";
       input += "*";
       symbol = "x";
-    } else if (symbol !== "+" || symbol !== "-" || symbol !== "÷") {
+    } else if (symbol === "+" || symbol === "-" || symbol === "÷") {
       before.textContent = before.textContent.slice(0, -1);
       before.textContent += "x";
       input = input.substring(0, input.length - 1);
       input += "*";
-      console.log(input);
       symbol = "x";
+    } else if (symbol === "delete") {
+      console.log("Number only");
     }
   }
 });
@@ -173,12 +201,14 @@ divideButton.addEventListener("click", function () {
       before.textContent += "÷";
       input += "/";
       symbol = "÷";
-    } else if (symbol !== "+" || symbol !== "-" || symbol !== "x") {
+    } else if (symbol === "+" || symbol === "-" || symbol === "x") {
       before.textContent = before.textContent.slice(0, -1);
       before.textContent += "÷";
       input = input.substring(0, input.length - 1);
       input += "/";
       symbol = "÷";
+    } else if (symbol === "delete") {
+      console.log("Number only");
     }
   }
 });
